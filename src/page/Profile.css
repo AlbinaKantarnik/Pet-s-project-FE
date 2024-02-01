@@ -1,0 +1,49 @@
+.profile-container {
+    background-image: url('/profile.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 100vw;
+    height: 100vh;
+    margin-top: 58px;
+    /* height: 75rem;
+    overflow: hidden;  */
+}
+.profile-container img {
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+}
+.profile-content {
+    display: flex;
+    height: 100vh;
+    padding: 3% 5% 0% 5%;
+    margin-right: 50%;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.profile-content button {
+    /* width: 130px; */
+    margin-block-start: 1.33em;
+}
+.progileTable{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    width: 322px;
+    justify-content: center;
+    align-content: center;
+}
+.progileTable input, textarea{
+    margin-left: 2em;
+    height: 30px;
+    padding: 3px 10px;
+}
+.progileTable h4{
+    margin-block-end: 0em;
+}
+.progileTable textarea{
+    width: 172px;
+    height: 100px;
+}

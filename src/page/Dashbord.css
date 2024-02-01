@@ -1,0 +1,24 @@
+.dashbord-container {
+    background-image: url('/admin6.png');
+    width: 100vw;
+    height: 15.625rem;
+    /* overflow: hidden;  */
+    margin-top: 58px;
+}
+.dashbord-container img{
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover;  
+}
+
+.dashbord-content {
+    display: flex;
+    padding: 3% 5% 3% 5%;
+    margin-left: 50%;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+}
+.dashbord-content h1{
+font-size: 2.2em;
+}
