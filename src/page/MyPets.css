@@ -1,0 +1,38 @@
+.myPets-container {
+    background-image: url('/my_pets5.png');
+    width: 100vw;
+    height: 15.625rem;
+    /* overflow: hidden;  */
+    margin-top: 58px;
+}
+.myPets-container img {
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+}
+.myPets-content {
+    display: flex;
+    padding: 3% 5% 3% 5%;
+    margin-left: 50%;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+}
+.myPets-content h1{
+font-size: 2.2em;
+}
+.MyPetsResults{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem 0;
+}
+.MyPetsResults button {
+    width: 130px;
+    margin: 0 10px;
+}
+.SavedPetsTable, .PetsTable {
+    display: flex;
+    justify-content: center;
+}
