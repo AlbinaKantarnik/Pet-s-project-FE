@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { fetchGetPetSearch } from '../API/fetchServer';
 
-const PetSearchTypeComponent = () => {
+const PetSearchTypeComponent = ({onPetData}) => {
   const [searchTypePet, setSearchTypePet] = useState({
     type: ''
   });
@@ -9,7 +9,7 @@ const PetSearchTypeComponent = () => {
   const handleSearch = async () => {
     try {
       const responseData = await fetchGetPetSearch(searchTypePet);
-      console.log('Server response:', responseData);
+      onPetData(responseData);
     } catch (error) {
       console.error('Error:', error.message);
     }
@@ -37,6 +37,7 @@ const PetSearchTypeComponent = () => {
         </h4>
       </div>
       <button onClick={handleSearch}>Search</button>
+      
     </>
   );
 };

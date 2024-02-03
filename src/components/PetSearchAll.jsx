@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { fetchGetPetSearchAll } from '../API/fetchServer';
 
-const PetSearchAllComponent = () => {
+const PetSearchAllComponent = ({onPetData}) => {
     const [searchPetsAll, setSearchPetsAll] = useState({
         type: '',
         name: '',
@@ -13,8 +13,7 @@ const PetSearchAllComponent = () => {
     const handleSearch = async () => {
         try {
             const responseData = await fetchGetPetSearchAll(searchPetsAll);
-            console.log('Server response:', responseData);
-
+            onPetData(responseData);
         } catch (error) {
             console.error('Error:', error.message);
 
