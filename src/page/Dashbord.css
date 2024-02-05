@@ -5,10 +5,11 @@
     /* overflow: hidden;  */
     margin-top: 58px;
 }
-.dashbord-container img{
-    width: 100%; 
-    height: 100%; 
-    object-fit: cover;  
+
+.dashbord-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .dashbord-content {
@@ -19,6 +20,62 @@
     align-items: flex-start;
     flex-wrap: nowrap;
 }
-.dashbord-content h1{
-font-size: 2.2em;
+
+.dashbord-content h1 {
+    font-size: 2.2em;
+}
+
+.ResultsTableButton {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+.ResultsTableButton button {
+    width: 100px;
+    margin: 0 10px;
+}
+
+.ResultsTable {
+    display: flex;
+    margin: 0 3rem;
+    justify-content: center;
+    flex-direction: column;
+}
+
+th {
+    padding: 0 17px;
+    background-color: #8fbcb7;
+}
+
+tr {
+    line-height: 3.5;
+}
+
+td,
+th {
+    border-bottom: 1px solid #f2925d;
+}
+
+table {
+    margin-bottom: 5rem;
+}
+
+.addPetDiv {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.addPetDiv button {
+    background-color: #f2925d;
+    width: 100px;
+    margin: 0 20px;
+    color: white;
+    border: 1px solid #f35a04;
+    height: 42.19px;
 }

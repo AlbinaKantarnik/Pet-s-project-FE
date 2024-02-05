@@ -5,11 +5,11 @@
 * I have full design pages:
 1) Home
 2) Profile (need include functions)
-3) Search 
+3) Search (need to show answer if we haven't got results)
+4) Dachbord (need button function, check admin)
 
 * I need to finish design pages:
 1) My Pets (without results)
-2) Dachbord (without results)
 
 * I need to create design
 1) module Login/ Singup

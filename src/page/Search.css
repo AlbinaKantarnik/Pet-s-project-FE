@@ -6,9 +6,9 @@
     height: 100%;
     margin-top: 58px;
 }
-.search-main {
+/* .search-main {
     background-color: #f35a04;
-}
+} */
 .search-content {
     display: flex;
     height: 100vh;
@@ -62,8 +62,9 @@ label{
     display: flex;
     justify-content: center;
 }
+
 .resultOfSearch{
-    margin: 0 1.875rem 3.625rem 1.875rem;
+    margin: 0 1.875rem 2.55rem 1.875rem;
 }
 
 .petStatus{

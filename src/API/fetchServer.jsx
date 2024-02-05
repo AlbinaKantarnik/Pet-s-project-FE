@@ -193,10 +193,19 @@ export const fetchPutUserEdit = async (id_user, editUser) => {
 
 export const fetchGetUserAll = async () => {
     try {
-        const data = await axios.get(`${URL}users`);
-        return data
+        const response = await axios.get(`${URL}users`);
+        return response.data
     } catch (error) {
         alert("Oops, we couldn't find all users")
+        console.error('Error server:', error.message);
+    }
+};
+export const fetchGetPetsAll = async () => {
+    try {
+        const response = await axios.get(`${URL}pets`);
+        return response.data
+    } catch (error) {
+        alert("Oops, we couldn't find all pets")
         console.error('Error server:', error.message);
     }
 };
