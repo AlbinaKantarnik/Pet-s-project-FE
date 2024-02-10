@@ -75,12 +75,13 @@ table {
 }
 
 .addPetDiv button {
-    background-color: #f2925d;
     width: 100px;
     margin: 0 20px;
     color: white;
-    border: 1px solid #f35a04;
     height: 42.19px;
+    background-color: #faa74f;
+    color: white;
+    border: 1px solid #e76922b8;
 }
 .FormContainer {
     display: flex;

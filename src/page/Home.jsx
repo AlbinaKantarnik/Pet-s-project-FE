@@ -1,7 +1,5 @@
 import './Home.css'
 import {useNavigate} from "react-router-dom";
-// import {fetch__} from '../API/fetchServer'
-// import { useTweet } from '../hook/TweetListContext';
 
 export default function Home() {
   const navigate = useNavigate();

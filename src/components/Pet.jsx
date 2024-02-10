@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { fetchPostNewPet, fetchPutPetEdit } from '../API/fetchServer';
-// selectedPet, editPet,addPet,
-const Pet = ({ show, handleClose, selectedPet, selectPet }) => {
+
+const Pet = ({ handleClose, selectedPet, selectPet }) => {
 
     const [name, setName] = useState(selectedPet ? selectedPet.name : '');
     const [type, setType] = useState(selectedPet ? selectedPet.type : '');
@@ -10,26 +10,12 @@ const Pet = ({ show, handleClose, selectedPet, selectPet }) => {
     const [weight, setWeight] = useState(selectedPet ? selectedPet.weight : '');
     const [color, setColor] = useState(selectedPet ? selectedPet.color : '');
     const [bio, setBio] = useState(selectedPet ? selectedPet.bio : '');
-    const [hypoallergenic, setHypoallergenic] = useState(selectedPet ? !!selectedPet.hypoallergenic.data[0] : false);
-    // const [dietaryRestrictions, setDietaryRestrictions] = useState(selectedPet ? selectedPet.dietaryRestrictions : '');
+    const [hypoallergenic, setHypoallergenic] = useState(selectedPet ? (selectedPet.hypoallergenic === 1): false);
     const [dietaryRestrictions, setDietaryRestrictions] = useState(selectedPet ? selectedPet.dietaryRestrictions || '' : '');
     const [breed, setBreed] = useState(selectedPet ? selectedPet.breed : '');
 
-    const handleAddPet = (e) => {
+    const handlePetChange = (e) => {
         e.preventDefault();
-
-        // if (text === '') return;
-
-        // if (selectedNote) {
-        //   const editedNote = {
-        //     date: selectedNote.date, 
-        //     id: selectedNote.id,
-        //     updatedDate: new Date().toISOString(),
-        //     title: title,
-        //     text: text
-        //   }
-
-        // } else {
 
         setName('');
         setType('');
@@ -42,7 +28,6 @@ const Pet = ({ show, handleClose, selectedPet, selectPet }) => {
         setDietaryRestrictions('');
         setHypoallergenic(false);
     };
-
 
     const handleAddPetServer = async () => {
         const newPet = {
@@ -92,7 +77,7 @@ const Pet = ({ show, handleClose, selectedPet, selectPet }) => {
 
     return (
         <div className='FormContainer'>
-            <form onSubmit={handleAddPet} className='Form'>
+            <form onSubmit={handlePetChange} className='Form'>
                 <label className='FormLabel'>Pet Name *:
                     <input type='text' placeholder='Pet Name' value={name} onChange={(e) => setName(e.target.value)} />
                 </label>
@@ -129,9 +114,9 @@ const Pet = ({ show, handleClose, selectedPet, selectPet }) => {
 
             </form>
             <h5><i>* - required fields</i></h5>
-            {selectedPet ?
-                <button onClick={handleEditPetServer} type='submit'>Edit pet</button> :
-                <button onClick={handleAddPetServer} type='submit'>Add new pet</button>
+            {selectedPet.id ?
+                <button onClick={handleEditPetServer} type='button'>{'Edit pet'}</button> :
+                <button onClick={handleAddPetServer} type='button'>{'Add new pet'}</button>
             }
         </div>
     );

@@ -19,6 +19,7 @@ const PetsTable = ({ rowData, setRowData }) => {
 
     const handleClose = () => {
         setShow(false);
+        setSelectedPet({});
     };
 
     const handleOpen = () => {

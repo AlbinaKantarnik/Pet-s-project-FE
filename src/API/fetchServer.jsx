@@ -5,7 +5,7 @@ const URL = 'http://localhost:3000/';
 // PETS ///////////////////////////////////////////
 export const fetchPostNewPet = async (newPet) => {
     try {
-        const data = await axios.post(`${URL}pets/add`, newPet);
+        const {data} = await axios.post(`${URL}pets/add`, newPet)
         return data
     } catch (error) {
         alert("Oops, we couldn't add this pet")

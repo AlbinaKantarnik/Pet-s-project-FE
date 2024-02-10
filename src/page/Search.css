@@ -49,10 +49,10 @@
     padding: 0rem;
 }
 .active-button {
-    background-color: #ed6a21ba;
+    background-color: #faa74f;
     color: white;
-    border:  1px solid #f35a04; 
-  }
+    border: 1px solid #e76922b8;
+}
 .inactive-button{
     background-color: #a08dabd1;
     color: white;

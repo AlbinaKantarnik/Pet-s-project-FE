@@ -1,5 +1,6 @@
-import './PetPage'
-export default function PetPage() {
+import './PetPage.css'
+
+export default function PetPage(rowData) {
 
 
     return (
