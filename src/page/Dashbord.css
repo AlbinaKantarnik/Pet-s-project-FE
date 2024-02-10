@@ -49,6 +49,9 @@ th {
     padding: 0 17px;
     background-color: #8fbcb7;
 }
+td {
+    padding: 7px;
+}
 
 tr {
     line-height: 3.5;
@@ -78,4 +81,57 @@ table {
     color: white;
     border: 1px solid #f35a04;
     height: 42.19px;
+}
+.FormContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.FormContainer h5{
+    margin-block-start: 0;
+    margin-block-end: 2em;
+}
+  .ReactModal__Overlay, .ReactModal__Overlay--after-open {
+    background-color: rgb(153 151 150 / 92%)!important;
+}
+.ReactModal__Overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ReactModal__Content {
+    position: static !important;
+    margin: auto;
+    border: 1px solid rgb(204, 204, 204);
+    background: rgb(255, 255, 255);
+    border-radius: 4px;
+    outline: none;
+    padding: 20px;
+}
+.Form label {
+    margin: 4px 0;
+    display: flex;
+    align-items: center;
+}
+.Form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 12px;
+    border: 1px solid #fff;
+    /* margin-bottom: 20px; */
+}
+.Form input, textarea {
+    margin-left: 2em;
+    padding: 7px 10px;
+    font-size: medium;
+}
+.Form textarea{
+    height: 70px;
+    width: 195px;
+    margin-left: 3em;
+    font-size: large;
 }

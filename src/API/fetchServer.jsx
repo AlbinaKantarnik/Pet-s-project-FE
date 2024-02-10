@@ -15,7 +15,7 @@ export const fetchPostNewPet = async (newPet) => {
 
 export const fetchGetPetById = async (id_pet) => {
     try {
-        const { data } = await axios.get(`${URL}pets/id/:${id_pet}`)
+        const { data } = await axios.get(`${URL}pets/id/${id_pet}`)
         return data;
     } catch (error) {
         console.error('Error server:', error.message);
@@ -23,19 +23,20 @@ export const fetchGetPetById = async (id_pet) => {
     }
 };
 
-export const fetchPutPetEdit = async (id_pet) => {
+export const fetchPutPetEdit = async (id_pet, editPet) => {
+    console.log('id_pet', id_pet, editPet)
     try {
-        const { data } = await axios.put(`${URL}pets/:${id_pet}`)
+        const { data } = await axios.put(`${URL}pets/${id_pet}`, editPet)
         return data;
     } catch (error) {
-        console.error('Error server:', error.message);
+        console.error('Error server PutPetEdit:', error.message);
         return []
     }
 };
 
 export const fetchPutPetAdopt = async (id_pet) => {
     try {
-        const { data } = await axios.put(`${URL}pets/:${id_pet}/adopt`)
+        const { data } = await axios.put(`${URL}pets/${id_pet}/adopt`)
         return data;
     } catch (error) {
         console.error('Error server:', error.message);
@@ -45,7 +46,7 @@ export const fetchPutPetAdopt = async (id_pet) => {
 
 export const fetchDeletePetReturn = async (id_pet) => {
     try {
-        const { data } = await axios.delete(`${URL}pets/:${id_pet}/return`)
+        const { data } = await axios.delete(`${URL}pets/${id_pet}/return`)
         return data;
     } catch (error) {
         console.error('Error server:', error.message);
@@ -55,7 +56,7 @@ export const fetchDeletePetReturn = async (id_pet) => {
 
 export const fetchPutPetSave = async (id_pet) => {
     try {
-        const { data } = await axios.put(`${URL}pets/:${id_pet}/save`)
+        const { data } = await axios.put(`${URL}pets/${id_pet}/save`)
         return data;
     } catch (error) {
         console.error('Error server:', error.message);
@@ -65,7 +66,7 @@ export const fetchPutPetSave = async (id_pet) => {
 // сделать в беке
 export const fetchGetPetsSaved = async (id_user) => {
     try {
-        const { data } = await axios.put(`${URL}pets/saved/:${id_user}`)
+        const { data } = await axios.put(`${URL}pets/saved/${id_user}`)
         return data;
     } catch (error) {
         console.error('Error server:', error.message);
@@ -75,7 +76,7 @@ export const fetchGetPetsSaved = async (id_user) => {
 
 export const fetchDeletePetUnsave = async (id_pet) => {
     try {
-        const { data } = await axios.delete(`${URL}pets/:${id_pet}/unsave`)
+        const { data } = await axios.delete(`${URL}pets/${id_pet}/unsave`)
         return data;
     } catch (error) {
         console.error('Error server:', error.message);
@@ -107,7 +108,7 @@ export const fetchGetPetSearchAll = async (searchPetsAll) => {
 
 export const fetchGetMyPets = async (id_user) => {
     try {
-        const { data } = await axios.get(`${URL}pets/user/:${id_user}`)
+        const { data } = await axios.get(`${URL}pets/user/${id_user}`)
         return data;
     } catch (error) {
         console.error('Error server:', error.message);
@@ -173,7 +174,7 @@ export const fetchPostUserLogout = async (User) => {
 
 export const fetchGetUserById = async (id_user) => {
     try {
-        const data = await axios.get(`${URL}users/:${id_user}`);
+        const data = await axios.get(`${URL}users/${id_user}`);
         return data
     } catch (error) {
         alert("Oops, we couldn't find this user")
@@ -183,7 +184,7 @@ export const fetchGetUserById = async (id_user) => {
 
 export const fetchPutUserEdit = async (id_user, editUser) => {
     try {
-        const data = await axios.put(`${URL}users/:${id_user}`, editUser);
+        const data = await axios.put(`${URL}users/${id_user}`, editUser);
         return data
     } catch (error) {
         alert("Oops, we couldn't change this user")

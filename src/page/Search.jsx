@@ -17,7 +17,7 @@ export default function Search() {
 
   const handlePetData = (responseData) => {
     setPetData(responseData);
-};
+  };
 
   return (
     <>

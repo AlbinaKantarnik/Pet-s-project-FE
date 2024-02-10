@@ -1,5 +1,5 @@
-import PetsTable from '../Elements/Table/PetsTable'
-import UserTable from '../Elements/Table/UserTable'
+import PetsTable from '../components/PetsTable'
+import UserTable from '../components/UserTable'
 import './Dashbord.css'
 import { useState, useEffect} from 'react'
 import { fetchGetPetsAll, fetchGetUserAll } from '../API/fetchServer';
@@ -34,7 +34,7 @@ export default function Dashbord() {
     }
     console.log('ser', serverData)
   };
-
+ 
 
   return (
     <>
@@ -51,7 +51,8 @@ export default function Dashbord() {
           {isLoading && <p>Loading...</p>}
           {!isLoading && (
             clickPets ?
-              serverData.map((rowData) => <PetsTable key={rowData.id} rowData={rowData} />):
+              serverData.map((rowData) => <PetsTable key={rowData.id} rowData={rowData} setRowData={setServerData}/>):
+              // petList={serverData} setPetList={setServerData}
               serverData.map((rowData) => <UserTable key={rowData.id} rowData={rowData} />)
           )}
 
