@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { fetchPostNewPet, fetchPutPetEdit } from '../API/fetchServer';
 
-const Pet = ({ handleClose, selectedPet, selectPet }) => {
+const Pet = ({ handleClose, selectedPet}) => {
 
     const [name, setName] = useState(selectedPet ? selectedPet.name : '');
     const [type, setType] = useState(selectedPet ? selectedPet.type : '');

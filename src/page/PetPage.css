@@ -1,15 +1,59 @@
-.petPage-container {
-    background-color: gray;
-   
+/* .petPage-container {
+    background-color: #c8bfd4;
+    position: fixed; 
+    top: 0;
+    left: 0;
     width: 100vw;
-    height: 90%;
+    height: 100vh; 
+    margin-top: 58px;
+    display: flex;
+    justify-content: center;
 }
 
 .petPage-content {
     display: flex;
-    padding: 3% 5% 0% 5%;
-    margin-left: 50%;
+    padding: 3% 5% 3% 5%;
+    margin: 58px 0;
     flex-direction: column;
-    align-items: flex-start;
-    flex-wrap: nowrap;
+    background-color: #f1e0cae3;
+    width: 623px;
+    border-radius: 8px;
+    border: 1px solid #ff9800b8;
+} */
+.petPage-container {
+    background-color: #c8bfd4;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    margin-top: 58px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Выравнивание контента по верхнему краю */
+}
+
+.petPage-content {
+    display: flex;
+    flex-direction: column;
+    padding: 3% 5%;
+    margin: 58px 4rem;
+    background-color: #ffffffe3;
+    max-width: 34.375rem;
+    border-radius: 24px;
+    border: 1px solid #eddbc0b8;
+    flex-grow: 1;
+    max-height: calc(100vh - 58px - 20px);
+    overflow-y: auto;
+}
+.petPage-content h2 {
+    margin-top: 0;
+}
+.Loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30%;
+    color: black;
+    width: 100vw;
 }

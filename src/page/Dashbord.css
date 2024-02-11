@@ -4,6 +4,9 @@
     height: 15.625rem;
     /* overflow: hidden;  */
     margin-top: 58px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .dashbord-container img {
@@ -43,6 +46,10 @@
     margin: 0 3rem;
     justify-content: center;
     flex-direction: column;
+}
+.ResultsTable a{
+    color: black;
+    text-decoration: none;
 }
 
 th {
@@ -94,7 +101,7 @@ table {
     margin-block-end: 2em;
 }
   .ReactModal__Overlay, .ReactModal__Overlay--after-open {
-    background-color: rgb(153 151 150 / 92%)!important;
+    background-color:rgb(153 151 150 / 8%)!important;
 }
 .ReactModal__Overlay {
     display: flex;
@@ -104,12 +111,13 @@ table {
 
 .ReactModal__Content {
     position: static !important;
+    top:100px;
     margin: auto;
     border: 1px solid rgb(204, 204, 204);
     background: rgb(255, 255, 255);
     border-radius: 4px;
     outline: none;
-    padding: 20px;
+    padding: 5px !important;
 }
 .Form label {
     margin: 4px 0;

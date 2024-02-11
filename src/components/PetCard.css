@@ -1,10 +1,13 @@
 .Card {
     background-color: #f1e0cae3;
     border: 1px solid #e48152; 
-    border-radius: 8px;
-    padding: 10px;
+    border-radius: 24px;
+    padding: 20px;
+    box-shadow: 16px 16px 17px rgba(0, 0, 0, 0.3);
 }
-
+.Card button{
+    background-color: #d98e6c;
+}
 .Container {
     display: inline-flex;
     flex-wrap: wrap;
@@ -16,6 +19,8 @@
     height: 11.25rem;
     margin-bottom: 0.625rem;
     background-size: cover;
+    border-radius: 24px;
+    border: #e19370 1px solid;
 }
 .CardText h5{
     margin-block-start: 0rem;
@@ -37,7 +42,7 @@ display: flex;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 .Form {
     display: flex;
