@@ -2,6 +2,7 @@ import PetCard from '../components/PetCard';
 import PetSearchAllComponent from '../components/PetSearchAll'
 import PetSearchTypeComponent from '../components/PetSearchType'
 import './Search.css'
+import React from 'react';
 import { useState } from 'react'
 
 

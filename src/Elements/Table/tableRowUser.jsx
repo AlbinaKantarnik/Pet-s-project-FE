@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const TableRowUser = ({ data, headers }) => {
   return (
@@ -8,8 +9,8 @@ const TableRowUser = ({ data, headers }) => {
           {headers.map((header) => (
             <td key={`${rowData.id}-${header.key}`}>{rowData[header.key]}</td>
           ))}
-        <td><button>Profile</button></td>
-        <td><button>Pets</button></td>
+        <td><button><Link to={ `/profile/${rowData.id}`}>Profile</Link></button></td>
+        <td><button><Link to={ `/mypets/${rowData.id}`}>Pets</Link></button></td>
         </tr>
       ))}
     </>

@@ -51,6 +51,10 @@
     color: black;
     text-decoration: none;
 }
+.ResultsTable a:hover{
+    color: black;
+    text-decoration: none;
+}
 
 th {
     padding: 0 17px;
@@ -143,4 +147,7 @@ table {
     width: 195px;
     margin-left: 3em;
     font-size: large;
+}
+.CardBlock1 {
+    text-align: left;
 }

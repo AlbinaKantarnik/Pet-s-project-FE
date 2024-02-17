@@ -3,7 +3,7 @@ import UserTable from '../components/UserTable'
 import './Dashbord.css'
 import { useState, useEffect} from 'react'
 import { fetchGetPetsAll, fetchGetUserAll } from '../API/fetchServer';
-
+import React from 'react';
 
 export default function Dashbord() {
   const [clickPets, setClickPets] = useState(false);
@@ -52,7 +52,6 @@ export default function Dashbord() {
           {!isLoading && (
             clickPets ?
               serverData.map((rowData) => <PetsTable key={rowData.id} rowData={rowData} setRowData={setServerData}/>):
-              // petList={serverData} setPetList={setServerData}
               serverData.map((rowData) => <UserTable key={rowData.id} rowData={rowData} />)
           )}
 

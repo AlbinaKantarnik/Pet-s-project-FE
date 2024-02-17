@@ -1,4 +1,5 @@
 import { Icon } from "./Icon"
+import React from 'react';
 
 export const TimeIcon = () => {
 

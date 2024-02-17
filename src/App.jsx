@@ -1,9 +1,9 @@
-import { useState } from 'react'
+import React from 'react';
 import './App.css'
-import { BrowserRouter as Router, Link, Route, Navigate, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from './page/Home'
 import Search from './page/Search';
-import Dashbord from './page/dashbord';
+import Dashbord from './page/Dashbord';
 import PetPage from './page/PetPage';
 import MyPets from './page/MyPets';
 import Profile from './page/Profile';
@@ -22,8 +22,8 @@ function App() {
           <Route path="/search" element={<Search />} />
           <Route path="/dashbord" element={<Dashbord />} />
           <Route path="/pets/:id_pet" element={<PetPage />} />
-          <Route path="/mypets" element={<MyPets />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/mypets/:id_user" element={<MyPets />} />
+          <Route path="/profile/:id_user" element={<Profile />} />
 
         </Routes>
         <Footer/>

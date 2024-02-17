@@ -3,12 +3,10 @@
     background-size: cover;
     background-position: center;
     width: 100vw;
-    height: 100%;
+    height: 100vh;
     margin-top: 58px;
 }
-/* .search-main {
-    background-color: #f35a04;
-} */
+
 .search-main {
     overflow-y: auto; 
     width: 100vw;
@@ -16,7 +14,7 @@
 }
 .search-content {
     display: flex;
-    height: 100vh;
+    max-height: 600px;
     padding: 3% 5% 5% 5%;
     margin-left: 50%;
     flex-direction: column;
