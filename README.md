@@ -4,21 +4,36 @@
 
 * I have full design pages:
 1) Home
-2) Profile (need include functions)
-3) Search (need to show answer if we haven't got results)
+2) Profile 
+- need include userContext
++ need to show sucсess message
+- mistake message
+3) Search 
++ loadMore Button
+- loadLess Button
++ scrollIntoView
++ select options of pet types
++ show answer if we haven't got results
+
 4) Dachbord (need check admin and button function:
 + add pet;
+- use img from computer
++ use url img
 + edit pet;
-- single page;
-- profile page;
-- user's pets)
-
-* I need to finish design pages:
-1) My Pets (without results)
++ single page;
++ profile page;
++ user's pets
+- loadMore Button OR LazyLoading
+- loadLess Button
++ sucсess message
+- mistake message)
+5) My Pets 
+6) single pet's page
+- function adopt, foster, save
 
 * I need to create design
 1) module Login/ Singup
-2) single pet's page
+
 
 
 
