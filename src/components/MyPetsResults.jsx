@@ -19,9 +19,7 @@ export default function MyPetsResults({ id_user }) {
         fetchMyPetData();
     }, [id_user]);
 
-    console.log("myPetData", myPetData)
-
-    if (!myPetData) {
+    if (myPetData.length === 0) {
         return <h2>You currently don't have any pets.</h2>
     }
 

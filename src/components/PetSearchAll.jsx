@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { fetchGetPetSearchAll } from '../API/fetchServer';
-
-const PetSearchAllComponent = ({onPetData}) => {
+// , setHasLess
+const PetSearchAllComponent = ({ onPetData, petTypes, setSearched,offset,setOffset,scrollToResults, setHasMore }) => {
     const [searchPetsAll, setSearchPetsAll] = useState({
         type: '',
         name: '',
@@ -12,13 +12,24 @@ const PetSearchAllComponent = ({onPetData}) => {
 
     const handleSearch = async () => {
         try {
-            const responseData = await fetchGetPetSearchAll(searchPetsAll);
+            const responseData = await fetchGetPetSearchAll(searchPetsAll, offset);
             onPetData(responseData);
+            setSearched(true); // Устанавливаем, что поиск выполнен
+            scrollToResults();
+            if (responseData.length ===0 ) {
+                setHasMore(false); // Если получено 0 результатов, значит данные закончились
+            }
+            // if (responseData.length ===5 ) {
+            //     setHasLess(true); // Если получено 5 результатов, значит данные закончились
+            // }
         } catch (error) {
             console.error('Error:', error.message);
-
         }
     };
+
+    useEffect(() => {
+        handleSearch(); 
+    }, [offset]);
 
     const handleInputChange = (event) => {
         const { name, value, type } = event.target;
@@ -35,17 +46,37 @@ const PetSearchAllComponent = ({onPetData}) => {
         }
     };
 
+    const handleClear = () => {
+        setSearchPetsAll({
+            type: '',
+            name: '',
+            height: '',
+            weight: '',
+            status: ''
+        });
+        setHasMore(true);
+        // setHasLess(false);
+        setSearched(false);
+        setOffset(0);
+        onPetData([]);
+    };
+
+    
+
     return (
         <>
             <div className='FullSearch'>
                 <h4>Type
-                    <input
-                        type="text"
+                    <select
                         name="type"
                         value={searchPetsAll.type}
                         onChange={handleInputChange}
-                        placeholder="Pet Type"
-                    /></h4>
+                    >
+                        <option value="">Select a type</option>
+                        {petTypes.map(type => (
+                            <option key={type.type_id} value={type.type}>{type.type}</option>
+                        ))}
+                    </select></h4>
                 <h4>Name
                     <input
                         type="text"
@@ -61,6 +92,7 @@ const PetSearchAllComponent = ({onPetData}) => {
                         value={searchPetsAll.height}
                         onChange={handleInputChange}
                         placeholder="Pet's height (sm)"
+                        step="1"
                     /></h4>
                 <h4>Weight
                     <input
@@ -69,42 +101,47 @@ const PetSearchAllComponent = ({onPetData}) => {
                         value={searchPetsAll.weight}
                         onChange={handleInputChange}
                         placeholder="(kg)"
+                        step="0.2"
                     /></h4>
                 <div className='petStatus'>
                     <h4>Pet's status:</h4>
                     <div className='lableColomns'>
-                    <label>
-                        <input
-                            type="radio"
-                            name="status"
-                            value="adopt"
-                            checked={searchPetsAll.status.includes('adopt')}
-                            onChange={handleInputChange}
-                        />
-                        Adopted
-                    </label>
-                    <label>
-                        <input
-                            type="radio"
-                            name="status"
-                            value="foster"
-                            checked={searchPetsAll.status.includes('foster')}
-                            onChange={handleInputChange}
-                        />
-                        Foster
-                    </label>
-                    <label>
-                        <input
-                            type="radio"
-                            name="status"
-                            value="unindentified"
-                            checked={searchPetsAll.status.includes('unindentified')}
-                            onChange={handleInputChange}
-                        />
-                        Available
-                    </label></div></div>
+                        <label>
+                            <input
+                                type="radio"
+                                name="status"
+                                value="adopt"
+                                checked={searchPetsAll.status.includes('adopt')}
+                                onChange={handleInputChange}
+                            />
+                            Adopted
+                        </label>
+                        <label>
+                            <input
+                                type="radio"
+                                name="status"
+                                value="foster"
+                                checked={searchPetsAll.status.includes('foster')}
+                                onChange={handleInputChange}
+                            />
+                            Foster
+                        </label>
+                        <label>
+                            <input
+                                type="radio"
+                                name="status"
+                                value="avaliable"
+                                checked={searchPetsAll.status.includes('avaliable')}
+                                onChange={handleInputChange}
+                            />
+                            Available
+                        </label></div></div>
             </div>
-            <button onClick={handleSearch}>Search</button>
+            <div className='search-button'>
+                <button onClick={handleSearch}>Search</button>
+                <button onClick={handleClear}>Clear filters</button>
+            </div>
+            
         </>
     );
 };

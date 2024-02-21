@@ -86,23 +86,25 @@ export const fetchDeletePetUnsave = async (id_pet) => {
 
 export const fetchGetPetSearch = async (searchTypePet) => {
     try {
-        const { data } = await axios.get(`${URL}pets/search/${searchTypePet.type}`);
+        const { data } = await axios.get(`${URL}pets/search/${searchTypePet}`);
         return data;
     } catch (error) {
         console.error('Error server:', error.message);
-        return [];
+        // return [];
+        throw error
     }
 };
 
-export const fetchGetPetSearchAll = async (searchPetsAll) => {
+export const fetchGetPetSearchAll = async (searchPetsAll, offset) => {
     try {
         const { data } = await axios.get(`${URL}pets/search_all`, {
-            params: searchPetsAll
+            params: { ...searchPetsAll, offset }
         });
         return data;
     } catch (error) {
         console.error('Error server:', error.message);
-        return []
+        // return []
+        throw error
     }
 };
 
@@ -112,9 +114,11 @@ export const fetchGetMyPets = async (id_user) => {
         return data;
     } catch (error) {
         console.error('Error server:', error.message);
-        return []
+        // return []
+        throw error
     }
 };
+
 export const fetchGetMySavedPets = async (id_user) => {
     try {
         const { data } = await axios.get(`${URL}pets/saved/user/${id_user}`)
@@ -122,6 +126,17 @@ export const fetchGetMySavedPets = async (id_user) => {
     } catch (error) {
         console.error('Error server:', error.message);
         return []
+    }
+};
+
+export const fetchGetTypesPet = async () => {
+    try {
+        const { data } = await axios.get(`${URL}pets/type`)
+        return data;
+    } catch (error) {
+        console.error('Error server:', error.message);
+        // return []
+        throw error
     }
 };
 
@@ -186,8 +201,9 @@ export const fetchGetUserById = async (id_user) => {
         const {data }= await axios.get(`${URL}users/${id_user}`);
         return data
     } catch (error) {
-        alert("Oops, we couldn't find this user")
+        // alert("Oops, we couldn't find this user")
         console.error('Error server:', error.message);
+        throw error
     }
 };
 
@@ -196,8 +212,8 @@ export const fetchPutUserEdit = async (id_user, editUser) => {
         const {data} = await axios.put(`${URL}users/${id_user}`, editUser);
         return data
     } catch (error) {
-        // alert("Oops, we couldn't change this user")
         console.error('Error server:', error.message);
+        throw error
     }
 };
 

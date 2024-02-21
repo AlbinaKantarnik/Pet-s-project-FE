@@ -1,43 +1,50 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { fetchGetPetSearch } from '../API/fetchServer';
 
-const PetSearchTypeComponent = ({onPetData}) => {
-  const [searchTypePet, setSearchTypePet] = useState({
-    type: ''
-  });
+const PetSearchTypeComponent = ({ onPetData, petTypes, scrollToResults }) => {
+  const [searchTypePet, setSearchTypePet] = useState('');
+
+
 
   const handleSearch = async () => {
     try {
       const responseData = await fetchGetPetSearch(searchTypePet);
       onPetData(responseData);
+      scrollToResults();
     } catch (error) {
       console.error('Error:', error.message);
     }
   };
 
+  // const handleInputChange = (event) => {
+  //   const { name, value } = event.target;
+  //   setSearchTypePet(prevParams => ({
+  //     ...prevParams,
+  //     [name]: value
+  //   }));
+  // };
   const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setSearchTypePet(prevParams => ({
-      ...prevParams,
-      [name]: value
-    }));
+    setSearchTypePet(event.target.value);
   };
 
   return (
     <>
       <div className='FullSearch'>
         <h4>Type
-          <input
-            type="text"
+          <select
             name="type"
-            value={searchTypePet.type}
+            value={searchTypePet}
             onChange={handleInputChange}
-            placeholder="Pet Type"
-          />
+          >
+            <option value="">Select a type</option>
+            {petTypes.map(type => (
+              <option key={type.type_id} value={type.type}>{type.type}</option>
+            ))}
+          </select>
         </h4>
       </div>
       <button onClick={handleSearch}>Search</button>
-      
+
     </>
   );
 };

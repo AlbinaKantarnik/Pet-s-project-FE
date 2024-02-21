@@ -1,11 +1,11 @@
 import { Icon } from "./Icon"
 import React from 'react';
 
-export const FavoriteIcon = () => {
+export const FavoriteIcon = ({ className }) => {
 
     return (
-        <span title="Save for later">
-            <Icon i="favorite"/>
+        <span title="Wishlist" >
+            <Icon i="favorite" className={className}/>
         </span>
     )
 }

@@ -5,6 +5,8 @@ const SaveMassage = ({ success, error }) => {
     const [visible, setVisible] = useState(false);
   
     useEffect(() => {
+      // console.log('success', success)
+      // console.log('error', error)
         if (success || error) {
           setVisible(true);
           const timer = setTimeout(() => {

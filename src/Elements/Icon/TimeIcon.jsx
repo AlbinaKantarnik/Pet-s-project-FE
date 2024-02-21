@@ -1,11 +1,11 @@
 import { Icon } from "./Icon"
 import React from 'react';
 
-export const TimeIcon = () => {
+export const TimeIcon = ({ className }) => {
 
     return (
-        <span title="Want to foster">
-            <Icon i="hourglass_top" />
+        <span title="Foster">
+            <Icon i="hourglass_top" className={className}/>
         </span>
     )
 }

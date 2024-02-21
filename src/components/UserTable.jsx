@@ -11,11 +11,11 @@ const headers = [
     { key: 'name_role', label: 'Role' },
 ];
 
-const UserTable = ({ rowData }) => {
+const UserTable = ({ rowData, key }) => {
 
     return (
-        <>
-            <table>
+    
+            <table key={key}>
                 <thead>
                     <tr>
                         <TableHeader headers={headers} />
@@ -27,7 +27,7 @@ const UserTable = ({ rowData }) => {
                     <TableRowUser headers={headers} data={rowData} />
                 </tbody>
             </table>
-        </>
+    
     );
 };
 

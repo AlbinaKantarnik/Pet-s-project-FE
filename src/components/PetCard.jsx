@@ -9,9 +9,13 @@ import Loading from './Loading';
 
 export default function PetCard({ petData }) {
 
-    // if (!petData){
-    //     return <Loading/>
-    // }
+    if (!petData) {
+        return <Loading />
+    }
+
+    const adoptIconClass = petData.pet_status === 1 ? 'activeIcon' : 'defaultIcon';
+    const timeIconClass = petData.pet_status === 2 ? 'activeIcon' : 'defaultIcon';
+    const favoriteIconClass = petData.saved_pet === 1 ? 'activeIcon' : 'defaultIcon';
 
     return (
         <>
@@ -28,9 +32,11 @@ export default function PetCard({ petData }) {
                         <button>
                             <Link to={`/pets/${petData.id}`}>Learn more</Link>
                         </button>
-                        
+
                         <div className='IconCard'>
-                            <AdoptIcon /> <TimeIcon /><FavoriteIcon />
+                            <AdoptIcon className={adoptIconClass} />
+                            <TimeIcon className={timeIconClass} />
+                            <FavoriteIcon className={favoriteIconClass} />
                         </div>
                     </div>
                 </div>

@@ -2,30 +2,12 @@ import { AdoptIcon } from '../Elements/Icon/AdoptIcon'
 import { FavoriteIcon } from '../Elements/Icon/FavoriteIcon'
 import { TimeIcon } from '../Elements/Icon/TimeIcon'
 import './PetPage.css'
-import { useParams, Link, useLocation } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import { fetchGetPetById } from '../API/fetchServer';
-import PetModal from '../components/PetModal';
 import Loading from '../components/Loading';
 
 const PetPage = () => {
-  // const { state } = useLocation();
-  // const {
-  //   show,
-  //   handleOpen,
-  //   handleClose,
-  //   selectedPet,
-  //   selectPet,
-  //   handleEditClick // Получаем handleEditClick из location.state
-  // } = state;
-
-  // const handleEditClick = (petData) => {
-  //   selectPet(petData);
-  //   handleOpen();
-  // };
-  // const { show, handleOpen, handleClose, selectedPet, selectPet, handleEditClick } = props;
-  // const location = useLocation();
-  // const { show, handleOpen, handleClose, selectedPet, selectPet } = location.state;
   const { id_pet } = useParams();
   const [petData, setPetData] = useState(null);
 
@@ -43,7 +25,7 @@ const PetPage = () => {
   }, [id_pet]);
 
   if (!petData) {
-    return <Loading/>
+    return <Loading />
   }
 
   //   if (!petData || petData.id !== id_pet) {
@@ -62,11 +44,10 @@ const PetPage = () => {
         return "Unknown status";
     }
   };
-  // const handleEditClick = (petData) => {
-  //   selectPet(petData);
-  //   console.log(typeof selectPet);
-  //   handleOpen();
-  // };
+
+  const adoptButtonClass = petData.pet_status === 1 ? 'primary' : '';
+  const timeButtonClass = petData.pet_status === 2 ? 'primary' : '';
+  const saveButtonClass = petData.saved_pet === 1 ? 'primary' : '';
 
   return (
     <>
@@ -77,8 +58,6 @@ const PetPage = () => {
             <button>
               <Link to={`/search`}>Create new search</Link>
             </button>
-            <button onClick={() => handleEditClick(petData)}>Edit</button>
-            {/* <PetModal show={show} handleClose={handleClose} selectedPet={selectedPet} selectPet={selectPet} /> */}
           </div>
 
           <div className='CardBlock1'>
@@ -107,9 +86,9 @@ const PetPage = () => {
           </div>
 
           <div className='IconCard'>
-            <button className='primary'><AdoptIcon />  Adopt</button>
-            <button><TimeIcon />  Fooster</button>
-            <button><FavoriteIcon />  Save</button> 
+            <button className={adoptButtonClass}><AdoptIcon /> Adopt</button>
+            <button className={timeButtonClass}><TimeIcon /> Fooster</button>
+            <button className={saveButtonClass}><FavoriteIcon /> Save</button>
           </div>
         </div>
 

@@ -1,11 +1,10 @@
 import { Icon } from "./Icon"
 import React from 'react';
 
-export const AdoptIcon = () => {
-
+export const AdoptIcon = ({ className }) => {
     return (
-        <span title="Want to adopt">
-            <Icon i="sound_detection_dog_barking" />
+        <span title="Adopt" >
+            <Icon i="sound_detection_dog_barking" className={className} />
         </span>
-    )
-}
+    );
+};

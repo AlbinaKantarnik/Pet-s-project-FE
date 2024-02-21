@@ -35,7 +35,6 @@ export default function ProfileTable({ id_user, userData, setUserData }) {
             setEditMode(false);
             setSaveSuccess(true); // Установить состояние при успешном сохранении
         } catch (error) {
-            console.error('Error:', error.message);
             setEditUser({
                 first_name: userData.first_name,
                 last_name: userData.last_name,
@@ -44,7 +43,9 @@ export default function ProfileTable({ id_user, userData, setUserData }) {
                 password: userData.password,
                 userbio: userData.userbio
             });
+            setSaveSuccess(false);
             setSaveError(error.message); // Установить состояние при ошибке сохранения
+            setEditMode(false);
         }
     };
 
