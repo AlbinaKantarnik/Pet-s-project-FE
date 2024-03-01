@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { fetchPostNewPet, fetchPutPetEdit } from '../API/fetchServer';
+import { fetchPostNewPet, fetchPutPetEdit } from '../../API/fetchServer';
 
 const Pet = ({ handleClose, selectedPet}) => {
 

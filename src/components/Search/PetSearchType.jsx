@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { fetchGetPetSearch } from '../API/fetchServer';
+import { fetchGetPetSearch } from '../../API/fetchServer';
 
 const PetSearchTypeComponent = ({ onPetData, petTypes, scrollToResults }) => {
   const [searchTypePet, setSearchTypePet] = useState('');

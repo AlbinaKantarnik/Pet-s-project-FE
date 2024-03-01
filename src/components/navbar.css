@@ -25,7 +25,16 @@
     color: #fcfcfd;
     text-decoration: underline;
 }
-  
+
+.rightSide ul {
+    list-style: none; /* Убираем маркеры списка */
+    padding: 0; 
+    margin: 0; 
+}
+
+.rightSide li {
+    display: inline-block; 
+}
 
 .Footer {
     display: flex;
@@ -52,7 +61,13 @@
   }
   .leftSide{
     padding-right: 1em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
   }
+.leftSide h4{
+    padding-right: 1em;
+}
 .leftSide button{
     background-color: rgb(163, 165, 167);
     border: 1px solid #6C757D;

@@ -1,0 +1,71 @@
+.singup{
+    display: flex;
+    padding: 15px;
+    width: 350px;
+    justify-content: center;
+}
+.singup :where(h4){
+    font-size: medium;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+.singup h2{
+    font-weight: bold;
+    margin: 0px;
+}
+.singupTable__btn{
+    display: flex;
+    justify-content: center;
+    margin-top: 15px !important;
+}
+.singupTable__btn button{
+    background-color: #a3a5a773;
+}
+.singupTable__btn button:hover{
+    background-color: #a3a5a7;
+}
+.singup input{
+    border: none; 
+    border-bottom: 1px solid #a3a5a773; 
+    outline: none; 
+    width: 100%;
+    height: 20px;
+    font-size: 16px;
+}
+.singupTable_name{
+    display: flex;
+    flex-wrap: wrap;
+}
+.singupTable_name input{
+    width: 140px;
+}
+.singupTable_name input:last-child{
+margin-left: 35px;
+}
+
+.error{
+    color: red;
+    font-size: small;
+}
+.modalButtons button{
+   margin: 0 10px;
+   
+}
+.modalButtons{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.logout{
+    width: 315px;
+    padding: 7px;
+}
+.logout label{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.logout :where(h4, h3){
+    text-align: center;
+    margin: 10px;
+}

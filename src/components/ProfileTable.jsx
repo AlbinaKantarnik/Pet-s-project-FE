@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { fetchPutUserEdit } from '../API/fetchServer';
 import SaveMassage from '../Elements/Usefull/SaveMassage';
+import { useUser } from '../Context/UserContext';
 
 export default function ProfileTable({ id_user, userData, setUserData }) {
     const [editMode, setEditMode] = useState(false);
@@ -14,26 +15,32 @@ export default function ProfileTable({ id_user, userData, setUserData }) {
     });
     const [saveSuccess, setSaveSuccess] = useState(false);
     const [saveError, setSaveError] = useState('');
+    const { user, updateUserContext } = useUser();
 
     const sendSaveRequest = async (data) => {
         try {
             const responseData = await fetchPutUserEdit(id_user, data);
-            return responseData;
+            return responseData.data;
         } catch (error) {
             console.error('Error:', error.message);
-            throw new Error('Error saving data. Please try again.');
+            // throw new Error('Error saving data. Please try again', error.message);
+            throw error;
         }
     };
-
+   
     const handleSave = async () => {
         try {
-            setSaveSuccess(false); // Сбросить состояние перед сохранением данных
-            setSaveError('');     // Сбросить состояние перед сохранением данных
-
+            setSaveSuccess(false);
+            setSaveError('');
             const responseData = await sendSaveRequest(editUser);
             setUserData(responseData);
+        
+            if (user.user_id == id_user) {
+                updateUserContext(responseData);
+            }
+
             setEditMode(false);
-            setSaveSuccess(true); // Установить состояние при успешном сохранении
+            setSaveSuccess(true);
         } catch (error) {
             setEditUser({
                 first_name: userData.first_name,
@@ -44,21 +51,18 @@ export default function ProfileTable({ id_user, userData, setUserData }) {
                 userbio: userData.userbio
             });
             setSaveSuccess(false);
-            setSaveError(error.message); // Установить состояние при ошибке сохранения
+            setSaveError(error.message);
             setEditMode(false);
         }
     };
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
-        const newValue = name === 'phone_number' ? parseInt(value) : value;
         setEditUser(prevParams => ({
             ...prevParams,
-            [name]: newValue
+            [name]: value
         }));
     };
-
-
     return (
         <>
             <SaveMassage success={saveSuccess} error={saveError} />
@@ -89,7 +93,7 @@ export default function ProfileTable({ id_user, userData, setUserData }) {
                     /></h4>
                 <h4>Phone
                     <input
-                        type="number"
+                        type="text"
                         name="phone_number"
                         value={editUser.phone_number}
                         onChange={handleInputChange}

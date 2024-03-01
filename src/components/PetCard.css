@@ -4,6 +4,12 @@
     border-radius: 24px;
     padding: 20px;
     box-shadow: 16px 16px 17px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease  transform 0.3s ease;
+}
+.Card:hover{
+    background-color: #f0f0f0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: scale(1.05);
 }
 
 .Card button {
@@ -51,6 +57,9 @@
     align-items: center;
     margin-top: 20px;
 }
+.IconCard svg {
+    cursor: pointer;
+  }
 
 .Form {
     display: flex;
@@ -67,8 +76,10 @@
     border-radius: 24px;
     color: white;
     background-color: #d98e6c;
+    cursor: pointer;
 }
 
 .defaultIcon {
     padding: 5px;
+    cursor: pointer;
 }

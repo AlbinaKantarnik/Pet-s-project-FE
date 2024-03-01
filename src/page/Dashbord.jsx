@@ -1,14 +1,16 @@
-import PetsTable from '../components/PetsTable'
-import UserTable from '../components/UserTable'
+import PetsTable from '../components/Dashbord/PetsTable'
+import UserTable from '../components/Dashbord/UserTable'
 import './Dashbord.css'
 import { useState, useEffect} from 'react'
 import { fetchGetPetsAll, fetchGetUserAll } from '../API/fetchServer';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Dashbord() {
   const [clickPets, setClickPets] = useState(false);
   const [serverData, setServerData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     handleSearchType(false); 
@@ -28,11 +30,12 @@ export default function Dashbord() {
     
       }
     } catch (error) {
-      console.error('Error:', error.message);
+      console.error('Error на фронте дашборд:', error);
+      navigate('/');
     } finally {
       setIsLoading(false);
+
     }
-    console.log('ser', serverData)
   };
  
 

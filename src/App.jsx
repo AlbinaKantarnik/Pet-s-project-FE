@@ -9,25 +9,25 @@ import MyPets from './page/MyPets';
 import Profile from './page/Profile';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import { useUser } from './Context/UserContext';
 
 function App() {
-
 
   return (
     <>
       <Router>
-        <Navbar/>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/search" element={<Search />} />
-          <Route path="/dashbord" element={<Dashbord />} />
-          <Route path="/pets/:id_pet" element={<PetPage />} />
-          <Route path="/mypets/:id_user" element={<MyPets />} />
-          <Route path="/profile/:id_user" element={<Profile />} />
-
-        </Routes>
-        <Footer/>
-      </Router>
+        <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/search" element={<Search />} />
+            <Route path="/pets/:id_pet" element={<PetPage />} />
+            <Route path='/mypets/:id_user' element={<MyPets />} />
+            <Route path='/profile/:id_user' element={<Profile />} />
+            <Route path="/dashbord" element={<Dashbord />} />
+                    
+          </Routes>  
+        </Router>
+      <Footer />
     </>
   )
 }

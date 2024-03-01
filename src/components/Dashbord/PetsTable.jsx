@@ -1,8 +1,8 @@
 import React, { useState, useEffect} from 'react';
-import TableHeader from "../Elements/Table/tableHeader";
-import TableRowPets from "../Elements/Table/tableRowPets";
-import PetModal from './PetModal';
-import { fetchGetPetsAll } from '../API/fetchServer';
+import TableHeader from "../../Elements/Table/tableHeader";
+import TableRowPets from "../../Elements/Table/tableRowPets";
+import PetModal from '../Modal components/PetModal';
+import { fetchGetPetsAll } from '../../API/fetchServer';
 
 const headers = [
     { key: 'id', label: 'ID' },

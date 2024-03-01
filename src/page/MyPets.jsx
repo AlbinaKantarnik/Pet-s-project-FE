@@ -1,8 +1,8 @@
 import './MyPets.css'
 import { useState } from 'react'
 import React from 'react';
-import MyPetsResults from '../components/MyPetsResults'
-import MySavedPetsResults from '../components/MySavedPetsResults';
+import MyPetsResults from '../components/My pet page/MyPetsResults'
+import MySavedPetsResults from '../components/My pet page/MySavedPetsResults';
 import { PetsIcon } from '../Elements/Icon/PetsIcon';
 import { SavedIcon } from '../Elements/Icon/SavedIcon';
 import { useParams } from 'react-router-dom';

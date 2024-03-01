@@ -17,6 +17,7 @@
   
   .error {
     color: red;
+    font-size: 1.1rem;
   }
   
   .message-content {
@@ -27,5 +28,11 @@
   }
   .message-content button{
     width: 100px;
+    font-size: medium;
+  }
+  .message-content h4{
+    font-weight: 300;
+    margin-bottom: 20px;
+
   }
   

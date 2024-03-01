@@ -8,7 +8,7 @@ import { useParams } from 'react-router-dom';
 export default function Profile() {
   const { id_user } = useParams();
   const [userData, setUserData] = useState(null);
-
+ 
   useEffect(() => {
     const fetchUserData = async () => {
       try {

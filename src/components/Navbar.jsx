@@ -1,44 +1,59 @@
 import './navbar.css'
-import {Link} from "react-router-dom";
-import React from 'react';
+import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import Logout from './Modal components/Logout';
+import ModalToChange from './Modal components/ModalToChange';
+import { useUser } from '../Context/UserContext';
 
 export default function Navbar() {
+    const [isOpen, setIsOpen] = useState(false);
+    const isAuthenticated = useUser();
+    
+    const onRequestClose = () => {
+        setIsOpen(false);
+    };
 
+    const handleOpenModal = () => {
+        setIsOpen(true);
+    };
 
+    console.log('isAuthenticated:', isAuthenticated.user);
     return (
         <>
             <div className='Navbar'>
-            
+
                 <div className='rightSide'>
-                    <Link to='/'>Home</Link>
-                    <Link to='/profile'>Profile</Link>
-                    <Link to='/mypets'>My Pets </Link>
-                    <Link to='/dashbord'>Dashbord </Link>
+                    <ul>
+                        <li><Link to='/'>Home</Link></li> 
+                        <li><Link to='/search'>Search </Link></li>
+                        {isAuthenticated.user.role  && 
+                         <>
+                        <li><Link to={`/profile/${isAuthenticated.user.user_id}`}>Profile</Link></li>
+                        <li><Link to={`/mypets/${isAuthenticated.user.user_id}`}>My Pets </Link></li>
+                       
+                            {isAuthenticated.user.role === 2 &&
+                            <>
+                            <li><Link to='/dashbord'>Dashbord </Link></li></>
+                        }
+                       
+                        </>}
+                    </ul>
                 </div>
                 <div className='leftSide'>
-                    <button>Login</button>
-                    <button>SignUp</button>
-                    <button>Logout</button>
+                    {isAuthenticated.user.Fname ? (
+                        <>
+                            <h4>Hi {isAuthenticated.user.Fname}!</h4>
+                            <button onClick={handleOpenModal}>Log out</button>
+                            <Logout isOpen={isOpen} onRequestClose={onRequestClose} />
+                        </>
+                    ) : (
+                        <>
+                            <button onClick={handleOpenModal}>Log in</button>
+                            <ModalToChange isOpen={isOpen} onRequestClose={onRequestClose} />
+                        </>
+                    )}
                 </div>
             </div>
         </>
     )
 }
-// import Container from 'react-bootstrap/Container';
-// import Navbar from 'react-bootstrap/Navbar';
-
-// function TextLinkExample() {
-//   return (
-//     <Navbar className="bg-body-tertiary">
-//       <Container>
-//         <Navbar.Brand href="#home">Navbar with text</Navbar.Brand>
-//         <Navbar.Toggle />
-//         <Navbar.Collapse className="justify-content-end">
-//           <Navbar.Text>
-//             Signed in as: <a href="#login">Mark Otto</a>
-//           </Navbar.Text>
-//         </Navbar.Collapse>
-//       </Container>
-//     </Navbar>
-//   );
-// }

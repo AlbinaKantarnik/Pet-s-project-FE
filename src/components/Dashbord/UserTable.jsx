@@ -1,6 +1,6 @@
 import React from 'react';
-import TableHeader from '../Elements/Table/tableHeader';
-import TableRowUser from '../Elements/Table/tableRowUser';
+import TableHeader from '../../Elements/Table/tableHeader';
+import TableRowUser from '../../Elements/Table/tableRowUser';
 
 const headers = [
     { key: 'id', label: 'ID' },

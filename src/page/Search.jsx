@@ -1,7 +1,7 @@
 import { fetchGetTypesPet } from '../API/fetchServer';
 import PetCard from '../components/PetCard';
-import PetSearchAllComponent from '../components/PetSearchAll'
-import PetSearchTypeComponent from '../components/PetSearchType'
+import PetSearchAllComponent from '../components/Search/PetSearchAll'
+import PetSearchTypeComponent from '../components/Search/PetSearchType'
 import './Search.css'
 import React, { useEffect } from 'react';
 import { useState, useRef } from 'react'
@@ -97,7 +97,7 @@ console.log('offset parent', offset)
 
           <div className='resultOfSearch'>
             {searched && petData.length === 0 && (
-              <h2>Sorry, we couldn't find any results. Clear your filters and try again.</h2>
+              <div className='Card'><h2>Sorry, we couldn't find any results. Clear your filters and try again.</h2></div>
             )}
             <div ref={resultsRef}></div>
             {isLoading && <p>Loading...</p>}

@@ -1,5 +1,5 @@
 import React from 'react';
-import PetModal from '../../components/PetModal';
+import PetModal from '../../components/Modal components/PetModal';
 
 import { Link } from 'react-router-dom';
 
