@@ -43,7 +43,7 @@ export default function Login({ isOpen, onRequestClose }) {
 
     const handleUserLoginChange = (e) => {
         const { name, value } = e.target;
-        const newError = { ...error }; // Копируем текущий объект ошибок
+        const newError = { ...error }; 
 
         if (name === 'password') {
             newError[name] = value.length < 8 ? 'Password is too short. It must be at least 8 characters long' : '';

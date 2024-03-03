@@ -15,7 +15,7 @@ export default function Search() {
   const [searched, setSearched] = useState(false);
   const resultsRef = useRef(null);
   const [hasMore, setHasMore] = useState(true);
-  // const [hasLess, setHasLess] = useState(false);
+  const [hasLess, setHasLess] = useState(false);
   const [offset, setOffset] = useState(0);
 
   const SEARCH_LIMIT = 5;
@@ -33,6 +33,7 @@ export default function Search() {
     fetchPetTypes();
   }, []);
 
+  //доделать поэтапный показ результатов + использовать общее кол-во результатов
   useEffect(() => {
     if (searched && petData.length > 0 && resultsRef.current) {
       resultsRef.current.scrollIntoView({ behavior: 'smooth' });
@@ -48,6 +49,7 @@ export default function Search() {
     setPetData(responseData);
   };
 
+
   const scrollToResults = () => {
     if (resultsRef.current) {
       resultsRef.current.scrollIntoView({ behavior: "smooth" });
@@ -58,11 +60,11 @@ export default function Search() {
     setOffset(prevOffset => prevOffset + SEARCH_LIMIT);
   };
 
-// const handleLoadLess = () => {
-//   setOffset(prevOffset => prevOffset - SEARCH_LIMIT);
-// };
-
-console.log('offset parent', offset)
+  const handleLoadLess = () => {
+    if (offset - SEARCH_LIMIT >= 0) {
+      setOffset(prevOffset => prevOffset - SEARCH_LIMIT);
+    }
+  };
 
   return (
     <>
@@ -77,22 +79,23 @@ console.log('offset parent', offset)
               <button onClick={() => handleSearchTypeChange(true)} className={isAdvancedSearch ? "active-button" : "inactive-button"}>Advanced search</button>
             </div>
 
-            {isAdvancedSearch ? 
-              <PetSearchAllComponent 
-                onPetData={handlePetData} 
-                scrollToResults={scrollToResults} 
-                setSearched={setSearched} 
-                petTypes={petTypes} 
-                offset={offset} 
-                setOffset={setOffset} 
+            {isAdvancedSearch ?
+              <PetSearchAllComponent
+                onPetData={handlePetData}
+                scrollToResults={scrollToResults}
+                setSearched={setSearched}
+                petTypes={petTypes}
+                offset={offset}
+                setOffset={setOffset}
                 setHasMore={setHasMore}
-                // setHasLess={setHasLess}
-                /> :
+                setHasLess={setHasLess}
+                SEARCH_LIMIT={SEARCH_LIMIT}
+              /> :
 
-              <PetSearchTypeComponent 
-              onPetData={handlePetData} 
-              scrollToResults={scrollToResults}  
-              petTypes={petTypes} />}
+              <PetSearchTypeComponent
+                onPetData={handlePetData}
+                scrollToResults={scrollToResults}
+                petTypes={petTypes} />}
           </div>
 
           <div className='resultOfSearch'>
@@ -102,11 +105,13 @@ console.log('offset parent', offset)
             <div ref={resultsRef}></div>
             {isLoading && <p>Loading...</p>}
             {!isLoading && petData.map((pet) => (
-              <PetCard key={pet.id} petData={pet} />))}
-              {searched && hasMore && !isLoading && (<div className='LoadMore'><button onClick={handleLoadMore} disabled={isLoading}>Load More</button></div>)}
-              {/* {searched && hasLess && !isLoading && (<div className='LoadMore'><button onClick={handleLoadLess} disabled={isLoading}>Back</button></div>)} */}
-          </div>
 
+              <PetCard key={pet.id} petData={pet} />))}
+            <div className='LoadMore'>
+              {searched && hasLess && !isLoading && (<button onClick={handleLoadLess} disabled={isLoading}>Back</button>)}
+              {searched && hasMore && !isLoading && (<button onClick={handleLoadMore} disabled={isLoading}>Load More</button>)}
+            </div>
+          </div>
         </div>
       </div>
     </>

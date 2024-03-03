@@ -16,13 +16,7 @@ const PetSearchTypeComponent = ({ onPetData, petTypes, scrollToResults }) => {
     }
   };
 
-  // const handleInputChange = (event) => {
-  //   const { name, value } = event.target;
-  //   setSearchTypePet(prevParams => ({
-  //     ...prevParams,
-  //     [name]: value
-  //   }));
-  // };
+  
   const handleInputChange = (event) => {
     setSearchTypePet(event.target.value);
   };

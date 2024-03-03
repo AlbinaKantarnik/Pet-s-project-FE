@@ -3,7 +3,7 @@ import PetModal from '../../components/Modal components/PetModal';
 
 import { Link } from 'react-router-dom';
 
-const TableRowPets = ({ data, headers, handleOpen, selectPet, show, handleClose, selectedPet }) => {
+const TableRowPets = ({ data, headers, handleOpen, selectPet, show, handleClose, selectedPet, fetchUpdatedPetList }) => {
   data.sort((a, b) => b.id - a.id);
 
   const handleEditClick = (rowData) => {
@@ -11,13 +11,6 @@ const TableRowPets = ({ data, headers, handleOpen, selectPet, show, handleClose,
     handleOpen();
   };
 
-  // const petProps = {
-  //   show: show,
-  //   handleOpen: handleOpen,
-  //   handleClose: handleClose,
-  //   selectedPet: selectedPet,
-  //   selectPet: selectPet
-  // };
   return (
     <>
       {data.map((rowData) => (
@@ -27,29 +20,10 @@ const TableRowPets = ({ data, headers, handleOpen, selectPet, show, handleClose,
           ))}
 
           <td><button>
-            {/* <Link to={`/pets/${rowData.id}`} show={show} handleOpen={handleOpen} handleClose={handleClose} selectedPet={selectedPet} selectPet={selectPet} >Single page</Link> */}
-
-            {/* <Link to={{ pathname: `/pets/${rowData.id}`, state: { show, handleOpen, handleClose, selectedPet, selectPet } }}>Single page</Link> */}
-
-            <Link to={ `/pets/${rowData.id}`}>Single page</Link>
-            {/* <Link
-              to={{
-                pathname: `/pets/${rowData.id}`,
-                state: {
-                  show,
-                  handleOpen,
-                  handleClose,
-                  selectedPet,
-                  selectPet,
-                  handleEditClick: handleEditClick // Передаем handleEditClick через state
-                }
-              }}
-            >
-              Single page
-            </Link> */}
+            <Link to={`/pets/${rowData.id}`}>Single page</Link>
           </button> </td>
           <td><button onClick={() => handleEditClick(rowData)}>Edit</button></td>
-          <PetModal show={show} handleClose={handleClose} selectedPet={selectedPet} selectPet={selectPet} />
+          <PetModal show={show} handleClose={handleClose} selectedPet={selectedPet} selectPet={selectPet} fetchUpdatedPetList={fetchUpdatedPetList} />
         </tr>
       ))}
     </>

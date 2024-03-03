@@ -12,7 +12,7 @@ export default function MySavedPetsResults({ id_user }) {
         const fetchMySavedPetData = async () => {
             try {
                 const response = await fetchGetMySavedPets(id_user);
-                setMySavePetData(response);
+                setMySavePetData(response.data);
             } catch (error) {
                 console.error('Error fetching to user page:', error);
             }
@@ -30,7 +30,6 @@ export default function MySavedPetsResults({ id_user }) {
     }
     return (
         <>
-            {/* You currently don't have any pets. */}
             <div className="SavedPetsTable">
                 <div className='resultOfSearch'>
                     {isLoading && <p>Loading...</p>}

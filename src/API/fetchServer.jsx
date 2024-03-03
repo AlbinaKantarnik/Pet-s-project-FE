@@ -1,10 +1,11 @@
 import React from 'react';
 import axios from "axios";
 const URL = 'http://localhost:3000/';
+const headersAuthorization = `Bearer ${localStorage.getItem('accessToken')}`
 
 // PETS ///////////////////////////////////////////
 export const fetchPostNewPet = async (newPet) => {
-    const headersAuthorization = `Bearer ${localStorage.getItem('accessToken')}`
+    
     try {
         const {data} = await axios.post(`${URL}pets/add`, newPet, {headers: {Authorization: headersAuthorization}})
         return data
@@ -19,74 +20,75 @@ export const fetchGetPetById = async (id_pet) => {
         const { data } = await axios.get(`${URL}pets/id/${id_pet}`)
         return data;
     } catch (error) {
-        console.error('Error server:', error.message);
+        console.error('Error server fetchGetPetById:', error.message);
         return []
     }
 };
 
 export const fetchPutPetEdit = async (id_pet, editPet) => {
-    const headersAuthorization = `Bearer ${localStorage.getItem('accessToken')}`
+    
     try {
-        const { data } = await axios.put(`${URL}pets/${id_pet}`, editPet, {headers: {Authorization: headersAuthorization}})
+        const data = await axios.put(`${URL}pets/${id_pet}`, editPet, {headers: {Authorization: headersAuthorization}})
         return data;
     } catch (error) {
         console.error('Error server PutPetEdit:', error.message);
-        return []
+        throw error.response.data.message;
     }
 };
 
-export const fetchPutPetAdopt = async (id_pet) => {
-    const headersAuthorization = `Bearer ${localStorage.getItem('accessToken')}`
+export const fetchPutPetAdopt = async (id_pet, status) => {
+    
     try {
-        const { data } = await axios.put(`${URL}pets/${id_pet}/adopt`, {headers: {Authorization: headersAuthorization}})
+        const data = await axios.put(`${URL}pets/${id_pet}/adopt`, {status}, {headers: {Authorization: headersAuthorization}})
         return data;
     } catch (error) {
-        console.error('Error server:', error.message);
-        return []
+        throw error.response.data.message;
     }
 };
 
 export const fetchDeletePetReturn = async (id_pet) => {
-    const headersAuthorization = `Bearer ${localStorage.getItem('accessToken')}`
+    
     try {
-        const { data } = await axios.delete(`${URL}pets/${id_pet}/return`, {headers: {Authorization: headersAuthorization}})
+        const data  = await axios.delete(`${URL}pets/${id_pet}/return`, {headers: {Authorization: headersAuthorization}})
         return data;
     } catch (error) {
-        console.error('Error server:', error.message);
-        return []
+        throw error.response.data.message;
+        
     }
 };
 
-export const fetchPutPetSave = async (id_pet) => {
-    const headersAuthorization = `Bearer ${localStorage.getItem('accessToken')}`
+export const fetchPutPetSave = async (id_pet, id_user) => {
+       
     try {
-        const { data } = await axios.put(`${URL}pets/${id_pet}/save`, {headers: {Authorization: headersAuthorization}})
+        const data  = await axios.put(`${URL}pets/${id_pet}/save`,{id_user}, {headers: {Authorization: headersAuthorization}})
+       
         return data;
     } catch (error) {
-        console.error('Error server:', error.message);
-        return []
+        console.error('Error server fetchPutPetSave:', error.message);
+        throw error.response.data.message;
     }
 };
 
 export const fetchGetPetsSaved = async (id_user) => {
-    const headersAuthorization = `Bearer ${localStorage.getItem('accessToken')}`
+    
     try {
-        const { data } = await axios.put(`${URL}pets/saved/${id_user}`, {headers: {Authorization: headersAuthorization}})
+        const data  = await axios.put(`${URL}pets/saved/${id_user}`, {headers: {Authorization: headersAuthorization}})
         return data;
     } catch (error) {
-        console.error('Error server:', error.message);
-        return []
+        console.error('Error server fetchGetPetsSaved:', error.message);
+        throw error.response.data.message;
+
     }
 };
 
 export const fetchDeletePetUnsave = async (id_pet) => {
-    const headersAuthorization = `Bearer ${localStorage.getItem('accessToken')}`
+        
     try {
-        const { data } = await axios.delete(`${URL}pets/${id_pet}/unsave`, {headers: {Authorization: headersAuthorization}})
+        const data = await axios.delete(`${URL}pets/${id_pet}/unsave`, {headers: {Authorization: headersAuthorization}})
         return data;
     } catch (error) {
         console.error('Error server:', error.message);
-        return []
+        throw error.response.data.message;
     }
 };
 
@@ -109,27 +111,25 @@ export const fetchGetPetSearchAll = async (searchPetsAll, offset) => {
         return data;
     } catch (error) {
         console.error('Error server:', error.message);
-        // return []
         throw error
     }
 };
 
 export const fetchGetMyPets = async (id_user) => {
-    const headersAuthorization = `Bearer ${localStorage.getItem('accessToken')}`
+    
     try {
         const { data } = await axios.get(`${URL}pets/user/${id_user}`, {headers: {Authorization: headersAuthorization}})
         return data;
     } catch (error) {
         console.error('Error server:', error.message);
-        // return []
         throw error
     }
 };
 
 export const fetchGetMySavedPets = async (id_user) => {
-    const headersAuthorization = `Bearer ${localStorage.getItem('accessToken')}`
+    
     try {
-        const { data } = await axios.get(`${URL}pets/saved/user/${id_user}`, {headers: {Authorization: headersAuthorization}})
+        const data = await axios.get(`${URL}pets/saved/user/${id_user}`, {headers: {Authorization: headersAuthorization}})
         return data;
     } catch (error) {
         console.error('Error server:', error.message);
@@ -143,7 +143,6 @@ export const fetchGetTypesPet = async () => {
         return data;
     } catch (error) {
         console.error('Error server:', error.message);
-        // return []
         throw error
     }
 };
@@ -175,13 +174,12 @@ export const fetchPostUserLogout = async () => {
         });
         return response.data;
     } catch (error) {
-        // console.error('Error server:', error.message);
         throw error.response.data.message;
     }
 };
 
 export const fetchGetUserById = async (id_user) => {
-    const headersAuthorization = `Bearer ${localStorage.getItem('accessToken')}`
+    
     try {
         const {data }= await axios.get(`${URL}users/${id_user}`, {headers: {Authorization: headersAuthorization}});
         return data
@@ -191,7 +189,7 @@ export const fetchGetUserById = async (id_user) => {
 };
 
 export const fetchPutUserEdit = async (id_user, editUser) => {
-    const headersAuthorization = `Bearer ${localStorage.getItem('accessToken')}`
+    
     try {
         const data = await axios.put(`${URL}users/${id_user}`, editUser, {headers: {Authorization: headersAuthorization}});
         return data.data
@@ -202,7 +200,7 @@ export const fetchPutUserEdit = async (id_user, editUser) => {
 };
 
 export const fetchGetUserAll = async () => {
-    const headersAuthorization = `Bearer ${localStorage.getItem('accessToken')}`
+    
     try {
         const response = await axios.get(`${URL}users`, {headers: {Authorization: headersAuthorization}});
         return response.data
@@ -213,12 +211,13 @@ export const fetchGetUserAll = async () => {
     }
 };
 export const fetchGetPetsAll = async () => {
-    const headersAuthorization = `Bearer ${localStorage.getItem('accessToken')}`
+    
     try {
         const response = await axios.get(`${URL}pets`, {headers: {Authorization: headersAuthorization}});
         return response.data
     } catch (error) {
         alert("Oops, we couldn't find all pets")
         console.error('Error server:', error.message);
+        return []
     }
 };

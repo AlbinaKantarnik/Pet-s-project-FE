@@ -17,7 +17,6 @@ export default function Navbar() {
         setIsOpen(true);
     };
 
-    console.log('isAuthenticated:', isAuthenticated.user);
     return (
         <>
             <div className='Navbar'>

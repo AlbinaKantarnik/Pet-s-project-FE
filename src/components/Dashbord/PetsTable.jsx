@@ -30,9 +30,6 @@ const PetsTable = ({ rowData, setRowData }) => {
         setSelectedPet(selectedPet);
       };
 
-    useEffect(() => {
-        fetchUpdatedPetList();
-    }, [rowData]);
 
     const fetchUpdatedPetList = async () => {
         try {
@@ -43,12 +40,13 @@ const PetsTable = ({ rowData, setRowData }) => {
             console.error('Error fetching updated pet list:', error);
         }
     };
+
     return (
         <>
             <div className='addPetDiv'>
                 <h3> Do you want to add a new pet? Hurry up and do it! </h3>
                 <button onClick={handleOpen}>Add pet</button>
-                <PetModal show={show} handleClose={handleClose} selectedPet={selectedPet} selectPet={selectPet} />
+                <PetModal show={show} handleClose={handleClose} selectedPet={selectedPet} selectPet={selectPet} fetchUpdatedPetList={fetchUpdatedPetList} />
             </div> 
         
             <table>
@@ -60,7 +58,7 @@ const PetsTable = ({ rowData, setRowData }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    <TableRowPets headers={headers} data={rowData} selectPet={selectPet} handleOpen={handleOpen} show={show} handleClose={handleClose} selectedPet={selectedPet}/>
+                    <TableRowPets headers={headers} data={rowData} selectPet={selectPet} handleOpen={handleOpen} show={show} handleClose={handleClose} selectedPet={selectedPet} fetchUpdatedPetList={fetchUpdatedPetList}/>
                 </tbody>
             </table>
 

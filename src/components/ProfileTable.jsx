@@ -23,7 +23,6 @@ export default function ProfileTable({ id_user, userData, setUserData }) {
             return responseData.data;
         } catch (error) {
             console.error('Error:', error.message);
-            // throw new Error('Error saving data. Please try again', error.message);
             throw error;
         }
     };
@@ -121,7 +120,7 @@ export default function ProfileTable({ id_user, userData, setUserData }) {
             {editMode && (
                 <button onClick={handleSave}>Save changes</button>
             )}
-            {/* Отображаем кнопку "Редактировать" только в режиме отображения данных */}
+            
             {!editMode && (
                 <button onClick={() => setEditMode(true)}>Edit profile</button>
             )}

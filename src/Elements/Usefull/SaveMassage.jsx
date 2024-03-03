@@ -3,14 +3,14 @@ import './SaveMassage.css'
 
 const SaveMassage = ({ success, error }) => {
     const [visible, setVisible] = useState(false);
-    const [saveMessage, setSaverMessage] = useState('');
+    const [saveMassage, setSaverMassage] = useState('');
   
     useEffect(() => {
       // console.log('success', success)
       // console.log('error', error)
         if (success || error) {
           setVisible(true);
-          setSaverMessage(success ? 'Data saved successfully!' : error);
+          setSaverMassage(success ? 'Data saved successfully!' : error);
           const timer = setTimeout(() => {
             setVisible(false);
           },3000 ); 
@@ -25,7 +25,7 @@ const SaveMassage = ({ success, error }) => {
   return (
     <div className={`save-message ${success ? 'success' : 'error'}`}>
     <div className="message-content">
-      <h4>{saveMessage}</h4>
+      <h3>{saveMassage}</h3>
       <button onClick={() => setVisible(false)}>Close</button>
     </div>
   </div>

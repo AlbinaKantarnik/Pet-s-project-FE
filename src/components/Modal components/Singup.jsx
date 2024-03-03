@@ -110,10 +110,6 @@ export default function Singup({ isOpen, onRequestClose }) {
                 onRequestClose();
                 navigate('/');
             }
-            // else if (responseData.status === 400 || responseData.status === 500) {
-            //     setSaveSuccess(false);
-            //     console.log('1111 error:', error);
-            //     setSaveError('Error: ' +responseData.message);}
             return responseData;
         } catch (error) {
             setSaveSuccess(false);

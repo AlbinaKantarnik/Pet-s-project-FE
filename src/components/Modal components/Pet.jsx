@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { fetchPostNewPet, fetchPutPetEdit } from '../../API/fetchServer';
 
-const Pet = ({ handleClose, selectedPet}) => {
+const Pet = ({ handleClose, selectedPet,fetchUpdatedPetList}) => {
 
     const [name, setName] = useState(selectedPet ? selectedPet.name : '');
     const [type, setType] = useState(selectedPet ? selectedPet.type : '');
@@ -45,6 +45,7 @@ const Pet = ({ handleClose, selectedPet}) => {
 
         try {
             const responseData = await fetchPostNewPet(newPet);
+            fetchUpdatedPetList();
             handleClose();
             return responseData;
         } catch (error) {
@@ -68,10 +69,11 @@ const Pet = ({ handleClose, selectedPet}) => {
         };
         try {
             const responseData = await fetchPutPetEdit(id_pet, editPet);
+            fetchUpdatedPetList();
             handleClose();
             return responseData;
         } catch (error) {
-            console.error('Error edit pet:', error.message);
+            console.error('Error edit pet:', error);
         }
     }
 

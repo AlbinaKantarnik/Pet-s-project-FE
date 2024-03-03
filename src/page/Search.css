@@ -95,3 +95,7 @@ select {
 .LoadMore{
     margin-top: 20px;
 }
+.LoadMore button{
+    width: 130px;
+    margin: 0 20px;
+}

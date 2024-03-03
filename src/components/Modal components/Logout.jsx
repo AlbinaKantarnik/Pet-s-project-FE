@@ -29,10 +29,7 @@ export default function Logout({ isOpen, onRequestClose }) {
                 <div className='singupTable'>
                     <label>
                         <h4>Dear {isAuthenticated.user.Fname} {isAuthenticated.user.Lname}</h4>
-                        {/* <p>User ID: {user.userId}</p>
-                        <p>First Name: {user.firstName}</p>
-                        <p>Last Name: {user.lastName}</p>
-                        <p>Role: {user.role}</p> */}
+                    
                         <h3>You really want to log out?</h3></label>
 
 

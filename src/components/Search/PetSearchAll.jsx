@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { fetchGetPetSearchAll } from '../../API/fetchServer';
 // , setHasLess
-const PetSearchAllComponent = ({ onPetData, petTypes, setSearched,offset,setOffset,scrollToResults, setHasMore }) => {
+const PetSearchAllComponent = ({ onPetData, petTypes, setSearched, offset, setOffset, scrollToResults, setHasMore, setHasLess, SEARCH_LIMIT }) => {
     const [searchPetsAll, setSearchPetsAll] = useState({
         type: '',
         name: '',
@@ -13,22 +13,32 @@ const PetSearchAllComponent = ({ onPetData, petTypes, setSearched,offset,setOffs
     const handleSearch = async () => {
         try {
             const responseData = await fetchGetPetSearchAll(searchPetsAll, offset);
-            onPetData(responseData);
-            setSearched(true); // Устанавливаем, что поиск выполнен
+            onPetData(responseData.data);
+            setSearched(true);
             scrollToResults();
-            if (responseData.length ===0 ) {
-                setHasMore(false); // Если получено 0 результатов, значит данные закончились
+            // Рассчитываем общее количество страниц
+            const totalPages = Math.ceil(responseData.total_results / SEARCH_LIMIT);
+
+            // Определяем, нужно ли отображать кнопку "Загрузить больше"
+            if (offset + SEARCH_LIMIT < responseData.total_results) {
+                setHasMore(true);
+            } else {
+                setHasMore(false);
             }
-            // if (responseData.length ===5 ) {
-            //     setHasLess(true); // Если получено 5 результатов, значит данные закончились
-            // }
+
+            // Определяем, нужно ли отображать кнопку "Загрузить меньше"
+            if (offset > 0) {
+                setHasLess(true);
+            } else {
+                setHasLess(false);
+            }
         } catch (error) {
             console.error('Error:', error.message);
         }
     };
 
     useEffect(() => {
-        handleSearch(); 
+        handleSearch();
     }, [offset]);
 
     const handleInputChange = (event) => {
@@ -55,13 +65,13 @@ const PetSearchAllComponent = ({ onPetData, petTypes, setSearched,offset,setOffs
             status: ''
         });
         setHasMore(true);
-        // setHasLess(false);
+        setHasLess(false);
         setSearched(false);
         setOffset(0);
         onPetData([]);
     };
 
-    
+
 
     return (
         <>
@@ -141,7 +151,7 @@ const PetSearchAllComponent = ({ onPetData, petTypes, setSearched,offset,setOffs
                 <button onClick={handleSearch}>Search</button>
                 <button onClick={handleClear}>Clear filters</button>
             </div>
-            
+
         </>
     );
 };
