@@ -1,4 +1,5 @@
 import { fetchGetUserById } from '../API/fetchServer';
+import { useUser } from '../Context/UserContext';
 import Loading from '../components/Loading';
 import ProfileTable from '../components/ProfileTable'
 import './Profile.css'
@@ -8,6 +9,7 @@ import { useParams } from 'react-router-dom';
 export default function Profile() {
   const { id_user } = useParams();
   const [userData, setUserData] = useState(null);
+  const isAuthenticated = useUser();
  
   useEffect(() => {
     const fetchUserData = async () => {
@@ -22,6 +24,9 @@ export default function Profile() {
     fetchUserData();
   }, [id_user]);
 
+  if (!isAuthenticated.user.Fname) {
+    return <Loading/>
+}
   if (!userData) {
     return <Loading/>
   }

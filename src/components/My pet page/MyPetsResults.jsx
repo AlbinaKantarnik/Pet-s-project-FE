@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { fetchGetMyPets } from '../../API/fetchServer';
 import PetCard from '../PetCard';
 import { Link } from 'react-router-dom';
+import Loading from '../Loading';
 
 export default function MyPetsResults({ id_user }) {
     const [myPetData, setMyPetData] = useState([]);
@@ -19,7 +20,12 @@ export default function MyPetsResults({ id_user }) {
 
         fetchMyPetData();
     }, [id_user]);
+    
 
+    if (!myPetData) {
+        return <Loading/>
+      }
+    
     if (myPetData.length === 0) {
         return <div className='noPetsResult'><h2>You currently don't have any pets.</h2>
                <button>

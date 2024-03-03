@@ -81,6 +81,10 @@ export default function Login({ isOpen, onRequestClose }) {
             
             if (responseData.status === 200) {
                 localStorage.setItem('accessToken', responseData.data.token);
+                // const expirationDate = new Date();
+                // expirationDate.setDate(expirationDate.getDate() + 30);
+                // document.cookie = `accessToken=${responseData.token}; expires=${expirationDate.toUTCString()}; path=/`;
+                // document.cookie = `accessToken=${responseData.data.token}; expires=${expirationDate.toUTCString()}; path=/`;
                 updateUserContext(responseData.data.infoUser);
                 setSaveSuccess(true)
                 onRequestClose();

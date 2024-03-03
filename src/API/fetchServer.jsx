@@ -205,7 +205,6 @@ export const fetchGetUserAll = async () => {
         const response = await axios.get(`${URL}users`, {headers: {Authorization: headersAuthorization}});
         return response.data
     } catch (error) {
-        alert("Oops, we couldn't find all users")
         console.error('Error server:', error.message);
         return []
     }
@@ -216,7 +215,6 @@ export const fetchGetPetsAll = async () => {
         const response = await axios.get(`${URL}pets`, {headers: {Authorization: headersAuthorization}});
         return response.data
     } catch (error) {
-        alert("Oops, we couldn't find all pets")
         console.error('Error server:', error.message);
         return []
     }

@@ -6,11 +6,17 @@ import MySavedPetsResults from '../components/My pet page/MySavedPetsResults';
 import { PetsIcon } from '../Elements/Icon/PetsIcon';
 import { SavedIcon } from '../Elements/Icon/SavedIcon';
 import { useParams } from 'react-router-dom';
+import { useUser } from '../Context/UserContext';
+import Loading from '../components/Loading';
 
 export default function MyPets() {
   const { id_user } = useParams();
   const [savedPets, setSavedPets] = useState(false);
-
+  const isAuthenticated = useUser();
+ 
+  if (!isAuthenticated.user.Fname) {
+    return <Loading/>
+}
     return (
       <>
       <div className="myPets-container">

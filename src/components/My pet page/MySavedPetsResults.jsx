@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react';
 import PetCard from '../PetCard';
 import { fetchGetMySavedPets } from '../../API/fetchServer';
 import { Link } from 'react-router-dom';
+import Loading from '../Loading';
 
 export default function MySavedPetsResults({ id_user }) {
 
     const [mySavePetData, setMySavePetData] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-
+    
     useEffect(() => {
         const fetchMySavedPetData = async () => {
             try {
@@ -20,6 +21,10 @@ export default function MySavedPetsResults({ id_user }) {
 
         fetchMySavedPetData();
     }, [id_user]);
+
+    if (!mySavePetData) {
+        return <Loading/>
+      }
 
     if (mySavePetData.length === 0) {
         return <div className='noPetsResult'><h2>You currently don't have any pets.</h2>

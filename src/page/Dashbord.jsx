@@ -5,12 +5,15 @@ import { useState, useEffect} from 'react'
 import { fetchGetPetsAll, fetchGetUserAll } from '../API/fetchServer';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import Loading from '../components/Loading';
+import { useUser } from '../Context/UserContext';
 
 export default function Dashbord() {
   const [clickPets, setClickPets] = useState(false);
   const [serverData, setServerData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const isAuthenticated = useUser();
 
   useEffect(() => {
     handleSearchType(false); 
@@ -37,7 +40,12 @@ export default function Dashbord() {
 
     }
   };
- 
+  if (!isAuthenticated.user.Fname) {
+    return <Loading/>
+}
+  if (!serverData) {
+    return <Loading/>
+  }
 
   return (
     <>
